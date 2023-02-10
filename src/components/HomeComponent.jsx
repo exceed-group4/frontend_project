@@ -22,10 +22,10 @@ const HomeComponent = ({ connected,
         <div className='box-card' onClick={() => navigate(`/safeBox/${safe_id}`)}>
             <h2>{safe_name}</h2>
             <h4>Status: {connected? "connected":"not connected"}</h4>
-            {temp?<p className='alert-abnormal'>Temperature: Abnormal</p>:<p>Temperature: Normal</p>}
-            {humid?<p className='alert-abnormal'>Humidity: Abnormal</p>:<p>Humidity: Normal</p>}
-            {flame?<p className='alert-abnormal'>Flame: Abnormal</p>:<p>Flame: Normal</p>}
-            {ultrasonic?<p className='alert-abnormal'>Box Location: Moved!</p>:<p>Box Location: Normal</p>}
+            {temp_alert?<p className='alert-abnormal'>Temperature: Abnormal</p>:<p>Temperature: Normal</p>}
+            {humid_alert?<p className='alert-abnormal'>Humidity: Abnormal</p>:<p>Humidity: Normal</p>}
+            {flame_alert?<p className='alert-abnormal'>Flame: Abnormal</p>:<p>Flame: Normal</p>}
+            {ultrasonic_alert?<p className='alert-abnormal'>Box Location: Moved!</p>:<p>Box Location: Normal</p>}
         </div>
     )
 
