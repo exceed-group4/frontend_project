@@ -19,7 +19,7 @@ const HomeComponent = ({ connected,
     ultrasonic_alert }) => {
     const navigate = useNavigate()
     return (
-        <div className='box-card' onClick={() => navigate(`/safeBox/${safe_id}`)}>
+        <div className='box-card' onClick={() => connected?navigate(`/safeBox/${safe_id}`):""}>
             <h2>{safe_name}</h2>
             <h4>Status: {connected ? "connected" : "not connected"}</h4>
             {!connected?"":temp_alert ? <p className='alert-abnormal'>Temperature: Abnormal</p> : <p>Temperature: Normal</p>}

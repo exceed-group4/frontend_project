@@ -1,11 +1,12 @@
 import {React, useState} from 'react'
+import { useParams } from 'react-router-dom'
 import './BoxSetting.css'
 import './toggleButton.css'
 
-const BoxSetting = (props) => {
+const BoxSetting = () => {
     const API_URL = 'http://group4.exceed19.online/safe_update'
     const API_URL2 = 'http://group4.exceed19.online/password'
-    const {safeId2} = props;
+    const {id} = useParams();
     const [pin2, setPin2] = useState("");
     const [lock, setLock] = useState(true);
     const [enable, setEnable] = useState(true);
@@ -16,13 +17,13 @@ const BoxSetting = (props) => {
         setEnable(!enable);
     }
     const payload = {
-        "safe_id": safeId2,
+        "safe_id": id,
         "safe_pin": pin2,
         "lock": lock,
         "safe_system_available": enable
     }
     const payload2 = {
-        "safe_id": parseInt(safeId2),
+        "safe_id": parseInt(id),
         "safe_pin": pin2
     }
     const checkPin = async () => {
@@ -87,7 +88,7 @@ const BoxSetting = (props) => {
         <div className="wrapper2">
             <div className="biggy">
                 <p className="texto">Safe Box System</p>
-                <p id="safeSafe">Safe Id: {safeId2}</p>
+                <p id="safeSafe">Safe Id: {id}</p>
                 <div className="pin-wrapper">
                     <p>PIN:</p>
                     <input id="pin" type="password" name="pin" onChange={(e)=>setPin2(e.target.value)}/>

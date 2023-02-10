@@ -3,6 +3,8 @@ import './App.css';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import Create from './components/Create';
+import BoxSetting from './components/BoxSetting';
+
 import { useState } from 'react';
 
 function App() {
@@ -11,7 +13,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='' element={<Home alreadyAlert={alreadyAlert} setAlreadyAlert={setAlreadyAlert}/>}/>
-        {/* <Route path='/safeBox/:id' element={}/> */}
+        <Route path='/safeBox/:id' element={<BoxSetting />}/>
         <Route path='/addBox' element={<Create/>}/>
       </Routes>
     </div>

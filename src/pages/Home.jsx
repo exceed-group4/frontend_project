@@ -30,10 +30,10 @@ const Home = ({alreadyAlert,setAlreadyAlert}) => {
         }
         if ((!alreadyAlert) && errorList.length!==0){
             Swal.fire({
-                title: 'Error!',
+                title: 'Warning!',
                 html: errorList,
-                icon: 'error',
-                confirmButtonText: 'Fixed'
+                icon: 'warning',
+                confirmButtonText: 'Dismiss'
             })
             setAlreadyAlert(true)
         }
