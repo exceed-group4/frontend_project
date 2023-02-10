@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap");
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    background: rgb(70,140,255);
+    background: linear-gradient(90deg, rgba(70,140,255,1) 15%, rgba(196,63,255,1) 53%, rgba(170,0,125,1) 100%);
+}
+
+.biggy {
+    position: relative;
+    height: 500px;
+    width: 50%;
+    background-color: rgb(140, 140, 140);
+    margin: 0 auto;
+    top: 100px;
+    margin-top: -25px;
+    border-radius: 25px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.texto {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    height: 110px;
+    line-height: 110px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    border: 1.5px;
+    background-color: rgb(64, 64, 64);
+    border-radius: 25px 25px 0 0;
+}
+
+.pin-wrapper {
+    position: relative;
+    display: inline-flex;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    left: 50%;
+    transform: translate(-50%);
+    /* top: 20px; */
+    padding: 10px 100px;
+    border-radius: 50px;
+}
+
+#pin {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    width: 180px;
+    height: 35px;
+    margin: 5px;
+    margin-right: 0;
+    border-radius: 20px 0 0 20px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    cursor: pointer;
+}
+
+#pin-submit {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    width: 70px;
+    height: 37.5px;
+    margin: 5px;
+    padding: 0px;
+    border-radius: 0 20px 20px 0;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: rgb(161, 161, 161);
+    cursor: pointer;
+
+}
+
+.button-wrapper {
+    /* background-color: aqua; */
+    position: relative;
+    display: inline-grid;
+    /* left: 50%;
+    transform: translate(-50%); */
+    top: 110px;
+    left: -220px;
+}
+
+#button-1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    margin-bottom: 50px;
+    padding: 15px 40px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: white;
+}
+
+#button-2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    padding: 15px 40px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#button-1:hover, #button-2:hover, #pin-submit:hover {
+    /* transform: translateY(-2px); */
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
