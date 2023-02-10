@@ -8,27 +8,30 @@ const Home = ({alreadyAlert,setAlreadyAlert}) => {
     const [detail, setDetail] =  useState([])
     // const [errorBadge, setErrorBadge] = useState(null)
     const detectError = (data) =>{
-        let errorList = []
+        let errorList = ""
         for (let d in data){
+            let errorKeep = ""
             if (data[d].temp_alert){
-                errorList.push("temp_alert")
+                errorKeep += "temp "
             }
             if (data[d].flame_alert) {
-                errorList.push("flame_alert")
+                errorKeep += "flame "
             }
             if (data[d].humid_alert){
-                errorList.push("humid_alert")
+                errorKeep += "humid"
             }
             if (data[d].ultrasonic_alert){
-                errorList.push("ultrasonic_alert")
+                errorKeep += "ultrasonic "
+            }
+            if (errorKeep.length!==0 && data[d].connected){
+                errorKeep += `error in box${data[d].safe_id}`
+                errorList += errorKeep + '\n'
             }
         }
-        // console.log(errorList)
-        console.log(errorList,alreadyAlert)
         if ((!alreadyAlert) && errorList.length!==0){
             Swal.fire({
                 title: 'Error!',
-                text: errorList,
+                html: errorList,
                 icon: 'error',
                 confirmButtonText: 'Fixed'
             })
