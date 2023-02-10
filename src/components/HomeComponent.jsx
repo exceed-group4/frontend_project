@@ -1,11 +1,23 @@
 import React from 'react'
 import './HomeComponent.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
-const HomeComponent = ({safe_id,safe_name,safe_pin,connected,safe_system_available,min_temp,max_temp,min_humid,max_humid,flame,temp,humid,ultrasonic}) => {
+const HomeComponent = ({ connected,
+    flame_alert,
+    humid_alert,
+    max_humid,
+    max_temp,
+    min_humid,
+    min_temp,
+    safe_id,
+    safe_name,
+    safe_pin,
+    safe_system_available,
+    salt,
+    temp_alert,
+    ultrasonic_alert }) => {
     const navigate = useNavigate()
-    // console.log(temp, humid)
     return (
         <div className='box-card' onClick={() => navigate(`/safeBox/${safe_id}`)}>
             <h2>{safe_name}</h2>
@@ -16,6 +28,8 @@ const HomeComponent = ({safe_id,safe_name,safe_pin,connected,safe_system_availab
             {ultrasonic?<p className='alert-abnormal'>Box Location: Moved!</p>:<p>Box Location: Normal</p>}
         </div>
     )
+
+
 }
 
 export default HomeComponent
