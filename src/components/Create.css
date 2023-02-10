@@ -1,0 +1,59 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.wrapper {
+    background-color: aliceblue;
+    padding: 20px 20px;
+    margin: 30px 100px;
+}
+
+#addSafe {
+    margin: 8px 0px 16px 0px;
+}
+
+form {
+    padding: 0px 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.toRight {
+    display: block;
+}
+
+form div label {
+    margin: 10px 0px 4px 4px;
+    display: block;
+    font-size: 18px;
+}
+
+form div input {
+    padding: 5px;
+    font-size: 18px;
+}
+
+.inlineText {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.inlineInput {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+#submitAdd {
+    margin: 20px auto 5px auto;
+    display: block;
+    background-color: rgb(61, 65, 139);
+    border: none;
+    box-shadow: 2px 2px 2px grey;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
