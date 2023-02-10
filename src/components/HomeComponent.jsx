@@ -11,9 +11,9 @@ const HomeComponent = ({safe_id,safe_name,safe_pin,connected,safe_system_availab
             <h2>{safe_name}</h2>
             <h4>Status: {connected? "connected":"not connected"}</h4>
             {temp?<p className='alert-abnormal'>Temperature: Abnormal</p>:<p>Temperature: Normal</p>}
-            {humid?<p className='alert-abnormal'>Humid: Abnormal</p>:<p>Humid: Normal</p>}
+            {humid?<p className='alert-abnormal'>Humidity: Abnormal</p>:<p>Humidity: Normal</p>}
             {flame?<p className='alert-abnormal'>Flame: Abnormal</p>:<p>Flame: Normal</p>}
-            {ultrasonic?<p className='alert-abnormal'>Box: Moved!</p>:<p>Box: Not moved</p>}
+            {ultrasonic?<p className='alert-abnormal'>Box Location: Moved!</p>:<p>Box Location: Normal</p>}
         </div>
     )
 }
