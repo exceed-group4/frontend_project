@@ -1,0 +1,24 @@
+.nav-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: gray;
+    color: white;
+}
+
+.logo {
+    margin-left: 5%;
+    justify-content: left;
+    text-align: left;
+}
+
+.add-button {
+    padding: 2% 2%;
+    margin-top: 2%;
+    margin-right: 2%;
+    font-size: 16px;
+    border-radius: 50px;
+}
+.add-button-div {
+    justify-content: right;
+    text-align: right;
+}
