@@ -3,13 +3,14 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './ResetPin.css'
 
 const ResetPin = () => {
-    const API_URL = '';
+    const API_URL = 'http://group4.exceed19.online/reset_password';
     const {id} = useParams();
     const [auth,setAuth] = useState('');
     const [newPin,setNewPin] = useState('');
     const payload = {
-        "auth": auth,
-        "safe_pin": newPin
+        "safe_id": id,
+        "new_safe_pin": newPin,
+        "OTP": parseInt(auth)
     }
     const updatePin = async () => {
         const response = await fetch(API_URL,{
@@ -38,7 +39,7 @@ const ResetPin = () => {
             alert("Enter new PIN 6 digits.");
         }
         else if(auth.length!==6){
-            alert("Enter correct auth");
+            alert("Enter correct OTP");
         }
     }
     const navigate = useNavigate()
@@ -52,7 +53,7 @@ const ResetPin = () => {
                 <p id="safeSafe">Safe Id: {id}</p>
                 <div className="pin-wrapper2">
                     <div className='littleRight'>
-                        <p>AUTH:</p>
+                        <p>OTP:</p>
                         <input id="auth" type="password" name="auth" onChange={(e)=>setAuth(e.target.value)}/>
                     </div>
                     <div>
