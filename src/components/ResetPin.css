@@ -4,8 +4,6 @@
 body {
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
-    /* background: rgb(70,140,255);
-    background: linear-gradient(90deg, rgba(70,140,255,1) 15%, rgba(196,63,255,1) 53%, rgba(170,0,125,1) 100%); */
 }
 
 .biggy {
@@ -41,32 +39,31 @@ body {
     width: 100%;
 }
 
-.pin-wrapper {
+.pin-wrapper2 {
     display: flex;
     flex-direction: column;
     background-color: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    /* left: 50%; */
     justify-content: center;
-    /* transform: translate(-50%); */
-    /* top: 20px; */
+    align-items: center;
     padding: 10px 100px;
     border-radius: 50px;
 }
 
-.pin-wrapper div{
+.pin-wrapper2 div{
     display: flex;
     flex-direction: row;
+    margin-top: 10px;
 }
 
-#pin {
+#auth, #newPin {
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
     width: 180px;
     height: 35px;
     margin: 5px;
     margin-right: 0;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     cursor: pointer;
@@ -74,77 +71,29 @@ body {
     font-size: 18px;
 }
 
-#pin-submit {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
-    width: 70px;
-    height: 37.5px;
-    margin: 5px;
-    padding: 0px;
-    border-radius: 0 20px 20px 0;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    background-color: rgb(161, 161, 161);
-    cursor: pointer;
-    font-size: 16px;
+.littleRight {
+    margin-left: 18px;
 }
 
-.button-wrapper {
-    /* background-color: aqua; */
-    position: relative;
-    display: flex;
-    /* left: 50%;
-    transform: translate(-50%); */
-    flex-direction: column;
-    margin-top: 20px;
-}
 
-#button-1 {
-    margin-bottom: 30px;
+#submitReset {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     cursor: pointer;
-}
-
-#button-2 {
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    font-size: 18px;
+    padding: 4px 0px;
+    border-radius: 5px;
     background-color: white;
-    cursor: pointer;
+    border: none;
+    margin: 20px;
+    width: 150px;
 }
 
-#pin-submit:hover, #submitSetting:hover {
+
+#submitReset:hover{
     /* transform: translateY(-2px); */
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     transition: all 0.25s ease-in-out;
     cursor: pointer;
-}
-
-#safeSafe {
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
-    padding: 4px 8px;
-    background-color: rgb(193, 193, 193);
-    border-radius: 2px;
-}
-
-.button-wrapper div{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.button-wrapper div p {
-    margin: 0px 10px;
-    font-size: 18px;
-}
-
-#secure {
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
-    padding: 4px 0px;
-    background-color: rgb(193, 193, 193);
-    border-radius: 2px;
-    margin-top: 25px;
 }
 
 #submitSetting {
@@ -154,10 +103,6 @@ body {
     background-color: white;
     border: none;
     margin: 20px;
-}
-
-.later {
-    display: none;
 }
 
 #resetPin {

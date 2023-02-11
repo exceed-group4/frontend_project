@@ -10,11 +10,24 @@ const BoxSetting = () => {
     const [pin2, setPin2] = useState("");
     const [lock, setLock] = useState(true);
     const [enable, setEnable] = useState(true);
+    const [pinCount, setPinCount] = useState(0);
     const handleLock = () => {
         setLock(!lock);
     }
     const handleEnable = () => {
         setEnable(!enable);
+    }
+    const tryPinCount = () => {
+        if(pinCount+1===3){
+            alert("You've entered incorrect PIN 3 times. Wait 10 minutes to try again");
+            document.querySelector("#pin-submit").disabled = true;
+            setTimeout(()=>{
+                document.querySelector("#pin-submit").disabled = false;
+                setPinCount(-1);
+            }, 10000);
+            //refresh will reset everything
+        }
+        setPinCount(pinCount+1);
     }
     const payload = {
         "safe_id": id,
@@ -43,8 +56,9 @@ const BoxSetting = () => {
             document.querySelector(".later").style.display = "block";
         }
         else{
-            console.log(data);
             alert(data.detail);
+            tryPinCount();
+            console.log(data);
         }
     }
     const updateInfo = async () => {
@@ -62,8 +76,9 @@ const BoxSetting = () => {
             alert(data.detail);
         }
         else{
-            console.log(data.detail);
             alert(data.detail);
+            tryPinCount();
+            console.log(data.detail);
         }
     }
     const handleSubmitSetting = (e) => {
@@ -73,6 +88,7 @@ const BoxSetting = () => {
         }
         else{
             alert("Enter correct PIN.");
+            tryPinCount();
         }
     }
     const handleSubmitPin = (e) => {
@@ -82,6 +98,7 @@ const BoxSetting = () => {
         }
         else{
             alert("Enter correct PIN.");
+            tryPinCount();
         }
     }
     return (
@@ -90,9 +107,12 @@ const BoxSetting = () => {
                 <p className="texto">Safe Box System</p>
                 <p id="safeSafe">Safe Id: {id}</p>
                 <div className="pin-wrapper">
+                    <div>
                     <p>PIN:</p>
                     <input id="pin" type="password" name="pin" onChange={(e)=>setPin2(e.target.value)}/>
                     <button id="pin-submit" type="submit" onClick={(e)=>handleSubmitPin(e)}>Submit</button>
+                    </div>
+                    <a href="" id="resetPin" >Reset PIN</a>
                 </div>
                 <div className="later">
                 <div className="button-wrapper">
