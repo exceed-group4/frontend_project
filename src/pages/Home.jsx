@@ -24,7 +24,7 @@ const Home = ({alreadyAlert,setAlreadyAlert}) => {
                 errorKeep += "ultrasonic "
             }
             if (errorKeep.length!==0 && data[d].connected){
-                errorKeep += `error in box${data[d].safe_id}`
+                errorKeep += `warning in box${data[d].safe_id}`
                 errorList += errorKeep + '\n'
             }
         }
@@ -47,7 +47,7 @@ const Home = ({alreadyAlert,setAlreadyAlert}) => {
         fetch('http://group4.exceed19.online/safe').then((getData)=>{
             if (getData !== 400){
                 getData.json().then((data)=>{setDetail(data)
-                // console.log(data)
+                console.log(data)
                 detectError(data)
                 })
             }
