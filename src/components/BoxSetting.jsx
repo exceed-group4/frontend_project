@@ -4,27 +4,50 @@ import './BoxSetting.css'
 import './toggleButton.css'
 
 const BoxSetting = () => {
+    const { id } = useParams();
     const API_URL = 'http://group4.exceed19.online/safe_update'
     const API_URL2 = 'http://group4.exceed19.online/password'
-    const { id } = useParams();
+    const API_URL3 = 'http://group4.exceed19.online/status_pin/' + id;
+    const API_URL4 = 'http://group4.exceed19.online/delay/' + id;
     const [pin2, setPin2] = useState("");
     const [lock, setLock] = useState(true);
     const [enable, setEnable] = useState(true);
     const [pinCount, setPinCount] = useState(0);
+    const [insertPin, setInsertPin] = useState(null);
+    setInterval(() => {
+        fetch(API_URL3)
+        .then((response)=>response.json())
+        .then((data)=>{
+            const d = new Date(data.time_next_pin);
+            console.log(d.toLocaleString('en-GB'));
+            if(data.can_pin===false){
+                document.querySelector("#retry").style.display = "block";
+                document.querySelector("#retry").innerHTML = `You can submit PIN again at ${d.toLocaleString('en-GB')}`;
+                document.querySelector("#pin-submit").disabled = true;
+            }
+            if(data.can_pin===true && insertPin===false){
+                document.querySelector("#pin-submit").disabled = false;
+                setPinCount(-1);
+                setInsertPin(true);
+                document.querySelector("#retry").style.display = "none";
+            }
+            setInsertPin(data.can_pin);
+        })
+    }, 3000);
     const handleLock = () => {
         setLock(!lock);
     }
     const handleEnable = () => {
         setEnable(!enable);
     }
-    const tryPinCount = () => {
+    const tryPinCount = async () => {
         if (pinCount + 1 === 3) {
             alert("You've entered incorrect PIN 3 times. Wait 10 minutes to try again");
             document.querySelector("#pin-submit").disabled = true;
-            setTimeout(() => {
-                document.querySelector("#pin-submit").disabled = false;
-                setPinCount(-1);
-            }, 10000);
+            setInsertPin(false);
+            const response = await fetch(API_URL4);
+            const data = await response.json();
+            console.log(data);
             //refresh will reset everything
         }
         setPinCount(pinCount + 1);
@@ -49,7 +72,7 @@ const BoxSetting = () => {
             body: JSON.stringify(payload2)
         });
         const data = await response.json();
-        // console.log(response);
+        console.log(response);
         if (response.status === 200) {
             console.log(data);
             alert(data.detail);
@@ -120,6 +143,7 @@ const BoxSetting = () => {
                 <p className="texto">Safe Box System</p>
                 <p id="safeSafe">Safe Id: {id}</p>
                 <div className="pin-wrapper">
+                    <p id="retry" style={{display: "none"}}></p>
                     <div>
                         <p>PIN:</p>
                         <input id="pin" type="password" name="pin" onChange={(e) => setPin2(e.target.value)} />
