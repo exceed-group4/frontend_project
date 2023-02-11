@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 const HomeComponent = ({ connected,
     flame_alert,
+    humid,
     humid_alert,
+    locked,
     max_humid,
     max_temp,
     min_humid,
@@ -16,19 +18,23 @@ const HomeComponent = ({ connected,
     safe_pin,
     safe_system_available,
     salt,
+    temp,
     temp_alert,
-    ultrasonic_alert }) => {
+    ultrasonic_alert,
+    }) => {
+    // console.log(typeof temp,temp)
+    const tempDec1 = parseFloat(temp).toFixed(1)
     const navigate = useNavigate()
     return (
         <div className='box-card' onClick={() => connected?navigate(`/safeBox/${safe_id}`):""}>
             <h2>{safe_name}</h2>
             <h4>Status: {connected ? "connected" : "not connected"}</h4>
             {!connected?"":temp_alert ? 
-            <p className='alert-abnormal'><span class="material-symbols-outlined">device_thermostat</span> Temperature: Abnormal</p> : 
-            <p><span class="material-symbols-outlined">device_thermostat</span> Temperature: Normal</p>}
+            <p className='alert-abnormal'><span class="material-symbols-outlined">device_thermostat</span> Temperature {tempDec1}°C : Abnormal</p> : 
+            <p><span class="material-symbols-outlined">device_thermostat</span> Temperature {tempDec1}°C : Normal</p>}
             {!connected?"":humid_alert ? 
-            <p className='alert-abnormal'><span class="material-symbols-outlined">humidity_mid</span> Humid: Abnormal</p> : 
-            <p><span class="material-symbols-outlined">humidity_mid</span> Humid: Normal</p>}
+            <p className='alert-abnormal'><span class="material-symbols-outlined">humidity_mid</span> Humid {humid}%RH : Abnormal</p> : 
+            <p><span class="material-symbols-outlined">humidity_mid</span> Humid {humid}% RH : Normal</p>}
             {!connected?"":flame_alert ? 
             <p className='alert-abnormal'><span class="material-symbols-outlined">mode_heat</span> Flame: Abnormal</p> : 
             <p><span class="material-symbols-outlined">mode_heat</span> Flame: Normal</p>}
