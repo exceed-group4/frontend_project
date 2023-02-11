@@ -1,11 +1,11 @@
 .nav-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: rgb(42, 46, 53);
+    background-color: rgb(98, 110, 118);
     color: white;
-    box-shadow: 1px 3px 9px 0px rgb(89, 89, 89);
-    -webkit-box-shadow: 1px 3px 9px 0px rgb(89, 89, 89);
-    -moz-box-shadow: 1px 3px 9px 0px rgb(89, 89, 89);
+    box-shadow: 1px 3px 9px 0px rgb(98, 110, 118);
+    -webkit-box-shadow: 1px 3px 9px 0px rgb(98, 110, 118);
+    -moz-box-shadow: 1px 3px 9px 0px rgb(98, 110, 118);
     margin-bottom: 3%;
 }
 

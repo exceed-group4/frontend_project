@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './ResetPin.css'
 
 const ResetPin = () => {
@@ -41,8 +41,12 @@ const ResetPin = () => {
             alert("Enter correct auth");
         }
     }
+    const navigate = useNavigate()
     return (
         <div className="wrapper2">
+            <div className='back-home-div'>
+                <a href="" onClick={()=>navigate('/')}><span class="material-symbols-outlined" id='back-home'>home</span></a>
+            </div>
             <div className="biggy">
                 <p className="texto">RESET PIN</p>
                 <p id="safeSafe">Safe Id: {id}</p>
