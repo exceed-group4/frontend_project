@@ -134,10 +134,15 @@ const BoxSetting = () => {
         .catch((error)=> console.error(error))
     }
     const navigate = useNavigate()
+    const checkLockEnable = () =>{
+        if (lock){
+            navigate('/')
+        }
+    }
     return (
         <div className="wrapper2">
             <div className='back-home-div'>
-                <a href="" onClick={()=>navigate('/')}><span className="material-symbols-outlined" id='back-home'>arrow_back</span></a>
+                <a onClick={()=>checkLockEnable()}><span className="material-symbols-outlined" id='back-home'>arrow_back</span></a>
             </div>
             <div className="biggy-setting">
                 <p className="texto">Safe Box System</p>
