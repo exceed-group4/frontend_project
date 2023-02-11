@@ -3,6 +3,7 @@ import './HomeComponent.css'
 import { useNavigate } from 'react-router-dom'
 
 
+
 const HomeComponent = ({ connected,
     flame_alert,
     humid_alert,
@@ -22,10 +23,18 @@ const HomeComponent = ({ connected,
         <div className='box-card' onClick={() => connected?navigate(`/safeBox/${safe_id}`):""}>
             <h2>{safe_name}</h2>
             <h4>Status: {connected ? "connected" : "not connected"}</h4>
-            {!connected?"":temp_alert ? <p className='alert-abnormal'>Temperature: Abnormal</p> : <p>Temperature: Normal</p>}
-            {!connected?"":humid_alert ? <p className='alert-abnormal'>Humid: Abnormal</p> : <p>Humid: Normal</p>}
-            {!connected?"":flame_alert ? <p className='alert-abnormal'>Flame: Abnormal</p> : <p>Flame: Normal</p>}
-            {!connected?"":ultrasonic_alert ? <p className='alert-abnormal'>Box Moved!</p> : <p>Flame: Normal</p>}
+            {!connected?"":temp_alert ? 
+            <p className='alert-abnormal'><span class="material-symbols-outlined">device_thermostat</span> Temperature: Abnormal</p> : 
+            <p><span class="material-symbols-outlined">device_thermostat</span> Temperature: Normal</p>}
+            {!connected?"":humid_alert ? 
+            <p className='alert-abnormal'><span class="material-symbols-outlined">humidity_mid</span> Humid: Abnormal</p> : 
+            <p><span class="material-symbols-outlined">humidity_mid</span> Humid: Normal</p>}
+            {!connected?"":flame_alert ? 
+            <p className='alert-abnormal'><span class="material-symbols-outlined">mode_heat</span> Flame: Abnormal</p> : 
+            <p><span class="material-symbols-outlined">mode_heat</span> Flame: Normal</p>}
+            {!connected?"":ultrasonic_alert ? 
+            <p className='alert-abnormal'><span class="material-symbols-outlined">radar</span> Box Moved!</p> : 
+            <p><span class="material-symbols-outlined">radar</span> Box position: Normal</p>}
         </div>
     )
 
