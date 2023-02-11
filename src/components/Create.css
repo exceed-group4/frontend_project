@@ -5,10 +5,15 @@ body {
 
 .wrapper {
     background-color: aliceblue;
-    padding: 20px 20px;
-    margin: 30px auto;
+    padding: 2%;
+    margin: 10% auto;
     width: 40%;
     min-width: 500px;
+    color: black;
+    border-radius: 25px;
+    box-shadow: 1px 3px 9px 0px rgba(255, 255, 255);
+    -webkit-box-shadow: 1px 3px 9px 0px rgba(255, 255, 255);
+    -moz-box-shadow: 1px 3px 9px 0px rgb(255, 255, 255);
 }
 
 #addSafe {
@@ -58,4 +63,9 @@ form div input {
     font-size: 18px;
     border-radius: 5px;
     padding: 10px 20px;
+}
+
+#submitAdd:hover{
+    background-color: rgb(237, 237, 237);
+    color: rgb(61, 65, 139);
 }

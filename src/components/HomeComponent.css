@@ -2,6 +2,7 @@
 
 h2 {
     margin:0 2%;
+    font-size: 2.5rem;
 }
 .box-card {
     /* width: 600px;
@@ -12,7 +13,9 @@ h2 {
     padding: 2%;
     border-radius: 15px;
     margin: 2% 30%;
+    color: black;
+    background-color: white;
 }
 .alert-abnormal {
-    color: red;
+    color: rgb(255, 0, 0);
 }

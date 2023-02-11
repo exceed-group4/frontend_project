@@ -1,12 +1,13 @@
-import {React, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { React, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import './BoxSetting.css'
 import './toggleButton.css'
 
 const BoxSetting = () => {
     const API_URL = 'http://group4.exceed19.online/safe_update'
     const API_URL2 = 'http://group4.exceed19.online/password'
-    const {id} = useParams();
+    const API_URL3 = 'http://group4.exceed19.online/send_otp'
+    const { id } = useParams();
     const [pin2, setPin2] = useState("");
     const [lock, setLock] = useState(true);
     const [enable, setEnable] = useState(true);
@@ -18,16 +19,16 @@ const BoxSetting = () => {
         setEnable(!enable);
     }
     const tryPinCount = () => {
-        if(pinCount+1===3){
+        if (pinCount + 1 === 3) {
             alert("You've entered incorrect PIN 3 times. Wait 10 minutes to try again");
             document.querySelector("#pin-submit").disabled = true;
-            setTimeout(()=>{
+            setTimeout(() => {
                 document.querySelector("#pin-submit").disabled = false;
                 setPinCount(-1);
             }, 10000);
             //refresh will reset everything
         }
-        setPinCount(pinCount+1);
+        setPinCount(pinCount + 1);
     }
     const payload = {
         "safe_id": id,
@@ -39,8 +40,11 @@ const BoxSetting = () => {
         "safe_id": parseInt(id),
         "safe_pin": pin2
     }
+    const payload3 = {
+        "safe_id": id
+    }
     const checkPin = async () => {
-        const response = await fetch(API_URL2,{
+        const response = await fetch(API_URL2, {
             method: 'PUT',
             mode: 'cors',
             headers: {
@@ -50,19 +54,19 @@ const BoxSetting = () => {
         });
         const data = await response.json();
         // console.log(response);
-        if(response.status===200){
+        if (response.status === 200) {
             console.log(data);
             alert(data.detail);
             document.querySelector(".later").style.display = "block";
         }
-        else{
+        else {
             alert(data.detail);
             tryPinCount();
             console.log(data);
         }
     }
     const updateInfo = async () => {
-        const response = await fetch(API_URL,{
+        const response = await fetch(API_URL, {
             method: 'PUT',
             mode: 'cors',
             headers: {
@@ -71,11 +75,11 @@ const BoxSetting = () => {
             body: JSON.stringify(payload)
         });
         const data = await response.json();
-        if(response.status===200){
+        if (response.status === 200) {
             console.log(data.detail);
             alert(data.detail);
         }
-        else{
+        else {
             alert(data.detail);
             tryPinCount();
             console.log(data.detail);
@@ -83,59 +87,68 @@ const BoxSetting = () => {
     }
     const handleSubmitSetting = (e) => {
         e.preventDefault();
-        if(payload.safe_pin.length===6){
+        if (payload.safe_pin.length === 6) {
             updateInfo();
         }
-        else{
+        else {
             alert("Enter correct PIN.");
             tryPinCount();
         }
     }
     const handleSubmitPin = (e) => {
         e.preventDefault();
-        if(payload.safe_pin.length===6){
+        if (payload.safe_pin.length === 6) {
             checkPin();
         }
-        else{
+        else {
             alert("Enter correct PIN.");
             tryPinCount();
         }
     }
+    const requestOTP = async() =>{
+        fetch(`http://group4.exceed19.online/send_otp/${id}`)
+        .then((getData)=>{console.log(getData)}).catch((error)=> console.error(error))
+    }
+    const navigate = useNavigate()
     return (
         <div className="wrapper2">
-            <div className="biggy">
+            <div className='back-home-div'>
+                <a href="" onClick={()=>navigate('/')}><span class="material-symbols-outlined" id='back-home'>arrow_back</span></a>
+            </div>
+            <div className="biggy-setting">
                 <p className="texto">Safe Box System</p>
                 <p id="safeSafe">Safe Id: {id}</p>
                 <div className="pin-wrapper">
                     <div>
-                    <p>PIN:</p>
-                    <input id="pin" type="password" name="pin" onChange={(e)=>setPin2(e.target.value)}/>
-                    <button id="pin-submit" type="submit" onClick={(e)=>handleSubmitPin(e)}>Submit</button>
+                        <p>PIN:</p>
+                        <input id="pin" type="password" name="pin" onChange={(e) => setPin2(e.target.value)} />
+                        <button id="pin-submit" type="submit" onClick={(e) => handleSubmitPin(e)}>Submit</button>
                     </div>
-                    <a href="" id="resetPin" >Reset PIN</a>
+                    <a href="" onClick={() => {navigate(`/resetPIN/${id}`) 
+                    requestOTP()}} id="resetPin" >Reset PIN</a>
                 </div>
                 <div className="later">
-                <div className="button-wrapper">
-                    <div>
-                        <p>Unlock</p>
-                        <label className="switch" id="switch1">
-                            <input type="checkbox" id="button-1" checked={lock} onChange={handleLock}/>
-                            <span class="slider round"></span>
-                        </label>
-                        <p>Lock</p>
+                    <div className="button-wrapper">
+                        <div>
+                            <p>Unlock</p>
+                            <label className="switch" id="switch1">
+                                <input type="checkbox" id="button-1" checked={lock} onChange={handleLock} />
+                                <span class="slider round"></span>
+                            </label>
+                            <p>Lock</p>
+                        </div>
+                        <p id="secure">Security Setting</p>
+                        <div>
+                            <p>Unable</p>
+                            <label className="switch" id="switch2">
+                                <input type="checkbox" id="button-2" checked={enable} onChange={handleEnable} />
+                                <span class="slider round"></span>
+                            </label>
+                            <p>Enable</p>
+                        </div>
+
                     </div>
-                    <p id="secure">Security Setting</p>
-                    <div>
-                        <p>Unable</p>
-                        <label className="switch" id="switch2">
-                            <input type="checkbox" id="button-2" checked={enable} onChange={handleEnable}/>
-                            <span class="slider round"></span>
-                        </label>
-                        <p>Enable</p>
-                    </div>
-                    
-                </div>
-                <button type='submit' id='submitSetting' onClick={(e)=>handleSubmitSetting(e)}>Confirm</button>
+                    <button type='submit' id='submitSetting' onClick={(e) => handleSubmitSetting(e)}>Confirm</button>
                 </div>
             </div>
         </div>

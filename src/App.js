@@ -4,6 +4,8 @@ import Nav from './components/Nav';
 import Home from './pages/Home';
 import Create from './components/Create';
 import BoxSetting from './components/BoxSetting';
+import ResetPin from './components/ResetPin';
+
 
 import { useState } from 'react';
 
@@ -15,6 +17,7 @@ function App() {
         <Route path='' element={<Home alreadyAlert={alreadyAlert} setAlreadyAlert={setAlreadyAlert}/>}/>
         <Route path='/safeBox/:id' element={<BoxSetting />}/>
         <Route path='/addBox' element={<Create/>}/>
+        <Route path='/resetPIN/:id' element={<ResetPin/>}/>
       </Routes>
     </div>
   );
