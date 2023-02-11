@@ -6,7 +6,6 @@ import './toggleButton.css'
 const BoxSetting = () => {
     const API_URL = 'http://group4.exceed19.online/safe_update'
     const API_URL2 = 'http://group4.exceed19.online/password'
-    const API_URL3 = 'http://group4.exceed19.online/send_otp'
     const { id } = useParams();
     const [pin2, setPin2] = useState("");
     const [lock, setLock] = useState(true);
@@ -39,9 +38,6 @@ const BoxSetting = () => {
     const payload2 = {
         "safe_id": parseInt(id),
         "safe_pin": pin2
-    }
-    const payload3 = {
-        "safe_id": id
     }
     const checkPin = async () => {
         const response = await fetch(API_URL2, {
@@ -106,14 +102,19 @@ const BoxSetting = () => {
         }
     }
     const requestOTP = async() =>{
-        fetch(`http://group4.exceed19.online/send_otp/${id}`)
-        .then((getData)=>{console.log(getData)}).catch((error)=> console.error(error))
+        await fetch(`http://group4.exceed19.online/send_otp/${id}`)
+        .then((getData)=>{
+            console.log(566);
+            console.log(getData.json());
+            navigate(`/resetPIN/${id}`);
+        })
+        .catch((error)=> console.error(error))
     }
     const navigate = useNavigate()
     return (
         <div className="wrapper2">
             <div className='back-home-div'>
-                <a href="" onClick={()=>navigate('/')}><span class="material-symbols-outlined" id='back-home'>arrow_back</span></a>
+                <a href="" onClick={()=>navigate('/')}><span className="material-symbols-outlined" id='back-home'>arrow_back</span></a>
             </div>
             <div className="biggy-setting">
                 <p className="texto">Safe Box System</p>
@@ -124,8 +125,9 @@ const BoxSetting = () => {
                         <input id="pin" type="password" name="pin" onChange={(e) => setPin2(e.target.value)} />
                         <button id="pin-submit" type="submit" onClick={(e) => handleSubmitPin(e)}>Submit</button>
                     </div>
-                    <a href="" onClick={() => {navigate(`/resetPIN/${id}`) 
-                    requestOTP()}} id="resetPin" >Reset PIN</a>
+                    <a onClick={() => {
+                        requestOTP(); 
+                    }} id="resetPin" >Reset PIN</a>
                 </div>
                 <div className="later">
                     <div className="button-wrapper">
@@ -133,7 +135,7 @@ const BoxSetting = () => {
                             <p>Unlock</p>
                             <label className="switch" id="switch1">
                                 <input type="checkbox" id="button-1" checked={lock} onChange={handleLock} />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                             </label>
                             <p>Lock</p>
                         </div>
@@ -142,7 +144,7 @@ const BoxSetting = () => {
                             <p>Unable</p>
                             <label className="switch" id="switch2">
                                 <input type="checkbox" id="button-2" checked={enable} onChange={handleEnable} />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                             </label>
                             <p>Enable</p>
                         </div>
