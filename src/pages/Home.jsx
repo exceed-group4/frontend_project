@@ -10,22 +10,24 @@ const Home = ({alreadyAlert,setAlreadyAlert}) => {
     const detectError = (data) =>{
         let errorList = ""
         for (let d in data){
-            let errorKeep = ""
-            if (data[d].temp_alert){
-                errorKeep += "temp "
-            }
-            if (data[d].flame_alert) {
-                errorKeep += "flame "
-            }
-            if (data[d].humid_alert){
-                errorKeep += "humid"
-            }
-            if (data[d].ultrasonic_alert){
-                errorKeep += "ultrasonic "
-            }
-            if (errorKeep.length!==0 && data[d].connected){
-                errorKeep += `warning in box${data[d].safe_id}`
-                errorList += errorKeep + '\n'
+            if (data[d].safe_system_available){
+                let errorKeep = ""
+                if (data[d].temp_alert){
+                    errorKeep += "temp "
+                }
+                if (data[d].flame_alert) {
+                    errorKeep += "flame "
+                }
+                if (data[d].humid_alert){
+                    errorKeep += "humid"
+                }
+                if (data[d].ultrasonic_alert){
+                    errorKeep += "ultrasonic "
+                }
+                if (errorKeep.length!==0 && data[d].connected){
+                    errorKeep += `warning in box${data[d].safe_id}`
+                    errorList += errorKeep + '\n'
+                }
             }
         }
         if ((!alreadyAlert) && errorList.length!==0){
