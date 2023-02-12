@@ -41,7 +41,7 @@ const HomeComponent = ({ connected,
             <p><span class="material-symbols-outlined">mode_heat</span> Flame: Normal</p>}
             {!connected?"":!safe_system_available? <p><span class="material-symbols-outlined">directions_walk</span></p>:ultrasonic_alert ? 
             <p className='alert-abnormal'><span class="material-symbols-outlined">directions_walk</span> Someone near the safe!</p> : 
-            <p><span class="material-symbols-outlined">directions_walk</span> Box position: Normal</p>}
+            <p><span class="material-symbols-outlined">directions_walk</span> No one here</p>}
         </div>
     )
 
