@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Safe Box System
+**Safe Box System** is a FARM stack project (FastAPI, React, and MongoDB) connected with LOLIN D32 PRO.
+This repository is part of the front end using ReactJS. There are temperature and relative humidity sensors, an ultrasonic sensor for detecting someone's approach to the front of the safe, and a flame sensor for detecting flame. If any value is strange or out of range, the alert panel will appear on the home page.
+- **Home page**: show the status of safe boxes which contain the safe box's name and values from sensors.
+- **Adding new safe**: enter safe id, name, PIN 6 digits, appropriate temperature range, and relative humidity range.
+- **Safe setting**: enter the PIN to unlock the safe and control the security alert system.
+- **Reset PIN**: if you click *Reset PIN*, you will receive OTP from LINE Notify. Enter OTP and new PIN.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
